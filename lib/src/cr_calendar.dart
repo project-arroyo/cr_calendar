@@ -44,11 +44,11 @@ final class CrCalendarController extends ChangeNotifier {
   /// Default constructor.
   CrCalendarController({
     this.onSwipe,
-    this.events,
+    this.events = [],
   });
 
   /// All calendar event currently stored by controller.
-  List<CalendarEventModel> events = [];
+  List<CalendarEventModel> events;
 
   /// Current opened date in calendar.
   late DateTime date;
