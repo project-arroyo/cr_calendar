@@ -225,6 +225,7 @@ class CrCalendar extends StatefulWidget {
     this.maxDate,
     this.weeksToShow,
     this.localizedWeekDaysBuilder,
+    this.isEventsTouchable = false,
     super.key,
   })  : assert(maxEventLines <= 6, 'maxEventLines should be less then 6'),
         assert(minDate == null || maxDate == null || minDate.isBefore(maxDate),
@@ -316,6 +317,9 @@ class CrCalendar extends StatefulWidget {
   /// When this parameter is not null, [firstDayOfWeek] and [weekDaysBuilder]
   /// parameters are ignored.
   final LocalizedWeekDaysBuilder? localizedWeekDaysBuilder;
+
+  /// Events ignore pointer, default is false
+  final bool isEventsTouchable;
 
   @override
   _CrCalendarState createState() => _CrCalendarState();
@@ -410,6 +414,7 @@ class _CrCalendarState extends State<CrCalendar> {
                 weeksToShow: widget.weeksToShow,
                 firstWeekDay: _firstWeekDay,
                 localizedWeekDaysBuilder: widget.localizedWeekDaysBuilder,
+                isEventsTouchable: widget.isEventsTouchable,
               ),
             );
           },

@@ -30,6 +30,7 @@ class MonthItem extends StatefulWidget {
     this.firstWeekDay = WeekDay.sunday,
     this.weeksToShow,
     this.localizedWeekDaysBuilder,
+    this.isEventsTouchable = false,
     super.key,
   });
 
@@ -49,6 +50,7 @@ class MonthItem extends StatefulWidget {
   final WeekDay firstWeekDay;
   final List<int>? weeksToShow;
   final LocalizedWeekDaysBuilder? localizedWeekDaysBuilder;
+  final bool isEventsTouchable;
 
   @override
   MonthItemState createState() => MonthItemState();
@@ -149,6 +151,7 @@ class MonthItemState extends State<MonthItem> {
                                   itemHeight,
                                 ),
                                 IgnorePointer(
+                                  ignoring: !widget.isEventsTouchable,
                                   child: EventsOverlay(
                                     eventBuilder: widget.eventBuilder,
                                     maxLines: widget.maxEventLines,
