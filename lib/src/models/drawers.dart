@@ -20,6 +20,7 @@ final class EventProperties {
     required this.end,
     required this.name,
     required this.backgroundColor,
+    required this.date,
   });
 
   /// Begin day number.
@@ -28,6 +29,9 @@ final class EventProperties {
   int end; // min 1 / max 7
   /// Background color.
   Color backgroundColor;
+
+  /// Date
+  DateTime date;
 
   /// Name displayed at start of the event widget.
   String name;
