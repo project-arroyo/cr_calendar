@@ -226,6 +226,7 @@ class CrCalendar extends StatefulWidget {
     this.weeksToShow,
     this.localizedWeekDaysBuilder,
     this.isEventsTouchable = false,
+    this.physics,
     super.key,
   })  : assert(maxEventLines <= 6, 'maxEventLines should be less then 6'),
         assert(minDate == null || maxDate == null || minDate.isBefore(maxDate),
@@ -321,6 +322,9 @@ class CrCalendar extends StatefulWidget {
   /// Events ignore pointer, default is false
   final bool isEventsTouchable;
 
+  /// Calendar scroll physics
+  final ScrollPhysics? physics;
+
   @override
   _CrCalendarState createState() => _CrCalendarState();
 }
@@ -373,6 +377,7 @@ class _CrCalendarState extends State<CrCalendar> {
         return PageView.builder(
           itemCount: _minPage + widget.controller._maxPage,
           controller: widget.controller._getUpdatedPageController(),
+          physics: widget.physics,
           itemBuilder: (context, index) {
             final offset = index - widget.controller._initialPage;
             final month = Jiffy.parseFromDateTime(_initialDate)
