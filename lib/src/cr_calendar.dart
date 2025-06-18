@@ -45,7 +45,11 @@ final class CrCalendarController extends ChangeNotifier {
   CrCalendarController({
     this.onSwipe,
     List<CalendarEventModel>? events,
+    DateTime? initialDate,
   }) {
+    if (initialDate != null) {
+      date = initialDate;
+    }
     this.events = events ?? [];
   }
 
