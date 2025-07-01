@@ -23,7 +23,7 @@ class EventsOverlay extends StatelessWidget {
   final Jiffy begin;
   final double itemWidth;
   final double itemHeight;
-  final double itemSpacing,
+  final double itemSpacing;
   final double topPadding;
   final int maxLines;
   final EdgeInsets? padding;
