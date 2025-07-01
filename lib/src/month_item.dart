@@ -17,6 +17,7 @@ class MonthItem extends StatefulWidget {
     required this.controller,
     required this.displayMonth,
     required this.maxEventLines,
+    required this.itemSpacing,
     this.weekDaysBuilder,
     this.currentDay,
     this.onDaySelected,
@@ -46,6 +47,7 @@ class MonthItem extends StatefulWidget {
   final CrCalendarController controller;
   final DateTime displayMonth;
   final double? eventTopPadding;
+  final double itemSpacing;
   final TouchMode touchMode;
   final WeekDay firstWeekDay;
   final List<int>? weeksToShow;
@@ -160,6 +162,7 @@ class MonthItemState extends State<MonthItem> {
                                             Contract.kDayItemTopPaddingCoef),
                                     itemWidth: itemWidth,
                                     itemHeight: itemHeight,
+                                    itemSpacing: itemSpacing,
                                     begin: _beginRange,
                                     weekList: _weeksEvents,
                                   ),

@@ -13,6 +13,7 @@ class EventsOverlay extends StatelessWidget {
     required this.topPadding,
     required this.itemHeight,
     required this.maxLines,
+    required this.itemSpacing,
     this.padding,
     this.eventBuilder,
     super.key,
@@ -22,6 +23,7 @@ class EventsOverlay extends StatelessWidget {
   final Jiffy begin;
   final double itemWidth;
   final double itemHeight;
+  final double itemSpacing,
   final double topPadding;
   final int maxLines;
   final EdgeInsets? padding;
@@ -40,6 +42,7 @@ class EventsOverlay extends StatelessWidget {
           row: index,
           eventLines: weekList[index].lines,
           itemHeight: itemHeight,
+          itemSpacing: itemSpacing,
           itemWidth: itemWidth,
           topPadding: topPadding,
           lineHeight: lineHeight,

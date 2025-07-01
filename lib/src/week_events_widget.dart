@@ -9,6 +9,7 @@ class WeekEventsWidget extends StatelessWidget {
     required this.itemWidth,
     required this.eventLines,
     required this.lineHeight,
+    required this.itemSpacing,
     this.topPadding = 0,
     this.row = 0,
     this.eventBuilder,
@@ -22,6 +23,7 @@ class WeekEventsWidget extends StatelessWidget {
   final double itemHeight;
   final double itemWidth;
   final double topPadding;
+  final double itemSpacing;
   final int row;
   final List<EventsLineDrawer> eventLines;
   late final EdgeInsets padding;
@@ -51,8 +53,7 @@ class WeekEventsWidget extends StatelessWidget {
             right: (Contract.kWeekDaysCount - item.end) * itemWidth +
                 padding.right,
             child: Container(
-              height:
-                  lineHeight - itemHeight / Contract.kDistanceBetweenEventsCoef,
+              height: lineHeight - itemHeight / itemSpacing,
               width: itemWidth * item.size() - Contract.kLinesPadding,
               child: eventBuilder != null
                   ? eventBuilder?.call(item)

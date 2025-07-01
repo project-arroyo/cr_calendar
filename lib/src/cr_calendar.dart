@@ -231,6 +231,7 @@ class CrCalendar extends StatefulWidget {
     this.localizedWeekDaysBuilder,
     this.isEventsTouchable = false,
     this.physics,
+    this.itemSpacing = 20.0,
     super.key,
   })  : assert(maxEventLines <= 6, 'maxEventLines should be less then 6'),
         assert(minDate == null || maxDate == null || minDate.isBefore(maxDate),
@@ -329,6 +330,9 @@ class CrCalendar extends StatefulWidget {
   /// Calendar scroll physics
   final ScrollPhysics? physics;
 
+  /// event overlay item spacing, default is 20.0
+  final double itemSpacing;
+
   @override
   _CrCalendarState createState() => _CrCalendarState();
 }
@@ -398,6 +402,7 @@ class _CrCalendarState extends State<CrCalendar> {
                 forceSixWeek: widget.forceSixWeek,
                 currentDay: _returnCurrentDayForDateOrNull(month),
                 touchMode: widget.touchMode,
+                itemSpacing: widget.itemSpacing,
                 onDayTap: (day) {
                   _scrollOnUnboundMonth(day);
                 },
