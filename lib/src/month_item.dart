@@ -162,7 +162,7 @@ class MonthItemState extends State<MonthItem> {
                                             Contract.kDayItemTopPaddingCoef),
                                     itemWidth: itemWidth,
                                     itemHeight: itemHeight,
-                                    itemSpacing: itemSpacing,
+                                    itemSpacing: widget.itemSpacing,
                                     begin: _beginRange,
                                     weekList: _weeksEvents,
                                   ),
