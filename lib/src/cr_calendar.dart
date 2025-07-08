@@ -387,7 +387,6 @@ class _CrCalendarState extends State<CrCalendar> {
     return OrientationBuilder(
       builder: (BuildContext context, Orientation orientation) {
         return PageView.builder(
-          padding: widget.padding,
           itemCount: _minPage + widget.controller._maxPage,
           controller: widget.controller._getUpdatedPageController(),
           physics: widget.physics,
