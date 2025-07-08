@@ -396,7 +396,7 @@ class _CrCalendarState extends State<CrCalendar> {
                 .add(months: offset)
                 .dateTime;
             return Container(
-              padding: padding,
+              padding: widget.padding,
               color: widget.backgroundColor,
               child: MonthItem(
                 eventTopPadding: widget.eventsTopPadding,
