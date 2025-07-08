@@ -213,6 +213,7 @@ class CrCalendar extends StatefulWidget {
   CrCalendar({
     required this.controller,
     required this.initialDate,
+    this.padding,
     this.weekDaysBuilder,
     this.onDayClicked,
     this.firstDayOfWeek = WeekDay.sunday,
@@ -246,6 +247,9 @@ class CrCalendar extends StatefulWidget {
             'weeksToShow can contain either 0,1,2,3,4 or 5 only.') {
     weeksToShow?.sort();
   }
+
+  /// Calendar page view padding
+  final EdgeInsets? padding;
 
   /// The minimum date until which the calendar can scroll
   final DateTime? minDate;
@@ -383,6 +387,7 @@ class _CrCalendarState extends State<CrCalendar> {
     return OrientationBuilder(
       builder: (BuildContext context, Orientation orientation) {
         return PageView.builder(
+          padding: widget.padding,
           itemCount: _minPage + widget.controller._maxPage,
           controller: widget.controller._getUpdatedPageController(),
           physics: widget.physics,
@@ -392,6 +397,7 @@ class _CrCalendarState extends State<CrCalendar> {
                 .add(months: offset)
                 .dateTime;
             return Container(
+              padding: padding,
               color: widget.backgroundColor,
               child: MonthItem(
                 eventTopPadding: widget.eventsTopPadding,

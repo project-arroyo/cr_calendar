@@ -46,6 +46,9 @@ class WeekEventsWidget extends StatelessWidget {
     for (var i = 0; i < eventLines.length; i++) {
       for (var j = 0; j < eventLines[i].events.length; j++) {
         final item = eventLines[i].events[j];
+        final double spacing = itemSpacing;
+        final double eventHeight = lineHeight - spacing;
+
         widgets.add(
           Positioned(
             top: i * lineHeight,
