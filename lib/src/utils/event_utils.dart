@@ -33,10 +33,13 @@ List<CalendarEventModel> calculateAvailableEventsForRange(
         DateTime.utc(event.begin.year, event.begin.month, event.begin.day);
     final eventEndUtc =
         DateTime.utc(event.end.year, event.end.month, event.end.day);
-    if (eventStartUtc.toJiffy().isInRange(start, end) ||
-        eventEndUtc.toJiffy().isInRange(start, end) ||
-        (start?.isInRange(eventStartUtc, eventEndUtc) ?? false) ||
-        (end?.isInRange(eventStartUtc, eventEndUtc) ?? false)) {
+    final jiffyEventStartUtc = eventStartUtc.toJiffy();
+    final jiffyEventEndUt = eventEndUtc.toJiffy();
+
+    if (jiffyEventStartUtc.isInRange(start, end) ||
+        jiffyEventEndUt.isInRange(start, end) ||
+        (start?.isInRange(jiffyEventStartUtc, jiffyEventEndUt) ?? false) ||
+        (end?.isInRange(jiffyEventStartUtc, jiffyEventEndUt) ?? false)) {
       eventsHappen.add(event);
     }
   }

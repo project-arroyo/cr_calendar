@@ -144,6 +144,12 @@ class MonthItemState extends State<MonthItem> {
                   height: itemHeight * _weekCount,
                   child: ValueListenableBuilder(
                     builder: (context, value, _) {
+                      final bool eventsOverlayTouchIgnoring;
+                      if (_weeksEvents.isEmpty) {
+                        eventsOverlayTouchIgnoring = true;
+                      } else {
+                        eventsOverlayTouchIgnoring = !widget.isEventsTouchable;
+                      }
                       return widget.controller.isShowingEvents.value
                           ? _getMonthCalendarWidget(itemWidth, itemHeight)
                           : Stack(
@@ -153,7 +159,7 @@ class MonthItemState extends State<MonthItem> {
                                   itemHeight,
                                 ),
                                 IgnorePointer(
-                                  ignoring: !widget.isEventsTouchable,
+                                  ignoring: eventsOverlayTouchIgnoring,
                                   child: EventsOverlay(
                                     eventBuilder: widget.eventBuilder,
                                     maxLines: widget.maxEventLines,
