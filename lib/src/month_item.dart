@@ -32,6 +32,7 @@ class MonthItem extends StatefulWidget {
     this.weeksToShow,
     this.localizedWeekDaysBuilder,
     this.isEventsTouchable = false,
+    this.itemScrollPhysics,
     super.key,
   });
 
@@ -53,6 +54,7 @@ class MonthItem extends StatefulWidget {
   final List<int>? weeksToShow;
   final LocalizedWeekDaysBuilder? localizedWeekDaysBuilder;
   final bool isEventsTouchable;
+  final ScrollPhysics? itemScrollPhysics;
 
   @override
   MonthItemState createState() => MonthItemState();
@@ -137,9 +139,10 @@ class MonthItemState extends State<MonthItem> {
               final itemHeight = size.height;
 
               return SingleChildScrollView(
-                physics: itemWidth == itemHeight
-                    ? const ClampingScrollPhysics()
-                    : const NeverScrollableScrollPhysics(),
+                physics: widget.itemScrollPhysics ??
+                    (itemWidth == itemHeight
+                        ? const ClampingScrollPhysics()
+                        : const NeverScrollableScrollPhysics()),
                 child: Container(
                   height: itemHeight * _weekCount,
                   child: ValueListenableBuilder(
