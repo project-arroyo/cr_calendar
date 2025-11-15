@@ -11,6 +11,7 @@ class WeekEventsWidget extends StatelessWidget {
     required this.lineHeight,
     required this.itemSpacing,
     this.topPadding = 0,
+    this.bottomPadding = 0,
     this.row = 0,
     this.eventBuilder,
     EdgeInsets? padding,
@@ -23,6 +24,7 @@ class WeekEventsWidget extends StatelessWidget {
   final double itemHeight;
   final double itemWidth;
   final double topPadding;
+  final double bottomPadding;
   final double itemSpacing;
   final int row;
   final List<EventsLineDrawer> eventLines;
@@ -32,8 +34,11 @@ class WeekEventsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: topPadding),
-      height: itemHeight - topPadding,
+      margin: EdgeInsets.only(
+        top: topPadding,
+        bottom: bottomPadding,
+      ),
+      height: itemHeight - topPadding - bottomPadding,
       child: Stack(
         children: _makePositionedEvents(),
       ),
@@ -46,8 +51,6 @@ class WeekEventsWidget extends StatelessWidget {
     for (var i = 0; i < eventLines.length; i++) {
       for (var j = 0; j < eventLines[i].events.length; j++) {
         final item = eventLines[i].events[j];
-        final double spacing = itemSpacing;
-        final double eventHeight = lineHeight - spacing;
 
         widgets.add(
           Positioned(

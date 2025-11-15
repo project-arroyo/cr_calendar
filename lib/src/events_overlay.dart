@@ -11,6 +11,7 @@ class EventsOverlay extends StatelessWidget {
     required this.begin,
     required this.itemWidth,
     required this.topPadding,
+    required this.bottomPadding,
     required this.itemHeight,
     required this.maxLines,
     required this.itemSpacing,
@@ -25,6 +26,7 @@ class EventsOverlay extends StatelessWidget {
   final double itemHeight;
   final double itemSpacing;
   final double topPadding;
+  final double bottomPadding;
   final int maxLines;
   final EdgeInsets? padding;
   final EventBuilder? eventBuilder;
@@ -45,6 +47,7 @@ class EventsOverlay extends StatelessWidget {
           itemSpacing: itemSpacing,
           itemWidth: itemWidth,
           topPadding: topPadding,
+          bottomPadding: bottomPadding,
           lineHeight: lineHeight,
           padding: padding,
         );
