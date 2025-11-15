@@ -34,6 +34,7 @@ class MonthItem extends StatefulWidget {
     this.localizedWeekDaysBuilder,
     this.isEventsTouchable = false,
     this.itemScrollPhysics,
+    this.isWeekdayHidden = false,
     super.key,
   });
 
@@ -57,6 +58,7 @@ class MonthItem extends StatefulWidget {
   final LocalizedWeekDaysBuilder? localizedWeekDaysBuilder;
   final bool isEventsTouchable;
   final ScrollPhysics? itemScrollPhysics;
+  final bool isWeekdayHidden;
 
   @override
   MonthItemState createState() => MonthItemState();
@@ -125,14 +127,15 @@ class MonthItemState extends State<MonthItem> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        LayoutBuilder(
-          builder: (context, constraint) {
-            final size = _getConstrainedSize(constraint);
-            return Row(
-              children: _getDaysOfWeek(size.width),
-            );
-          },
-        ),
+        if (!widget.isWeekdayHidden)
+          LayoutBuilder(
+            builder: (context, constraint) {
+              final size = _getConstrainedSize(constraint);
+              return Row(
+                children: _getDaysOfWeek(size.width),
+              );
+            },
+          ),
         Expanded(
           child: LayoutBuilder(
             builder: (context, constraint) {

@@ -235,6 +235,8 @@ class CrCalendar extends StatefulWidget {
     this.physics,
     this.itemSpacing = 20.0,
     this.itemScrollPhysics,
+    this.scrollDirection = Axis.horizontal,
+    this.isWeekdayHidden = false,
     super.key,
   })  : assert(maxEventLines <= 6, 'maxEventLines should be less then 6'),
         assert(minDate == null || maxDate == null || minDate.isBefore(maxDate),
@@ -345,6 +347,12 @@ class CrCalendar extends StatefulWidget {
   /// item scroll physics, default is null
   final ScrollPhysics? itemScrollPhysics;
 
+  /// scrollDirection, default is horizontal
+  final Axis scrollDirection;
+
+  /// weekday hidden, default is false
+  final bool isWeekdayHidden;
+
   @override
   _CrCalendarState createState() => _CrCalendarState();
 }
@@ -398,6 +406,7 @@ class _CrCalendarState extends State<CrCalendar> {
           itemCount: _minPage + widget.controller._maxPage,
           controller: widget.controller._getUpdatedPageController(),
           physics: widget.physics,
+          scrollDirection: widget.scrollDirection,
           itemBuilder: (context, index) {
             final offset = index - widget.controller._initialPage;
             final month = Jiffy.parseFromDateTime(_initialDate)
@@ -444,6 +453,7 @@ class _CrCalendarState extends State<CrCalendar> {
                 localizedWeekDaysBuilder: widget.localizedWeekDaysBuilder,
                 isEventsTouchable: widget.isEventsTouchable,
                 itemScrollPhysics: widget.itemScrollPhysics,
+                isWeekdayHidden: widget.isWeekdayHidden,
               ),
             );
           },
