@@ -237,6 +237,7 @@ class CrCalendar extends StatefulWidget {
     this.itemScrollPhysics,
     this.scrollDirection = Axis.horizontal,
     this.isWeekdayHidden = false,
+    this.pageSnapping = true,
     super.key,
   })  : assert(maxEventLines <= 6, 'maxEventLines should be less then 6'),
         assert(minDate == null || maxDate == null || minDate.isBefore(maxDate),
@@ -353,6 +354,9 @@ class CrCalendar extends StatefulWidget {
   /// weekday hidden, default is false
   final bool isWeekdayHidden;
 
+  /// pageSnapping, default is true
+  final bool pageSnapping;
+
   @override
   _CrCalendarState createState() => _CrCalendarState();
 }
@@ -407,6 +411,7 @@ class _CrCalendarState extends State<CrCalendar> {
           controller: widget.controller._getUpdatedPageController(),
           physics: widget.physics,
           scrollDirection: widget.scrollDirection,
+          pageSnapping: widget.pageSnapping,
           itemBuilder: (context, index) {
             final offset = index - widget.controller._initialPage;
             final month = Jiffy.parseFromDateTime(_initialDate)
